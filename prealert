@@ -1,0 +1,48 @@
+package boxon.front.end;
+
+import java.sql.Driver;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import io.netty.handler.codec.http.multipart.FileUpload;
+
+public class Prealert {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		System.setProperty("webdriver.edge.driver", "C://Users//Jyotheeswar//Downloads//newver//msedgedriver.exe");
+		WebDriver driver = new EdgeDriver();
+		driver.get("http://cricbuzz.smarteweb.com/wbe/index.php/en/component/userprofile/user?layout=viewshipments");
+		driver.manage().window().maximize();
+		driver.findElement(By.id("unameTxt")).sendKeys("AECUST1004");
+		driver.findElement(By.id("passwordTxt")).sendKeys("Iblesoft@123");
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/a")).click();
+		driver.findElement(By.id("mnameTxt")).sendKeys("TATA");
+		driver.findElement(By.id("carrierTxt")).sendKeys("DTDC");
+		driver.findElement(By.id("carriertrackingTxt")).sendKeys("223323");
+		driver.findElement(By.xpath("//*[@id=\"orderdateTxt\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/div/span[1]")).click();
+		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/div/span[1]")).click();
+		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[2]/td[6]/a")).click();
+		driver.findElement(By.id("country3Txt")).click();
+		Select drpcountry = new Select(driver.findElement(By.id("country3Txt")));
+		drpcountry.selectByVisibleText("AUSTRALIA");
+		driver.findElement(By.id("1")).sendKeys("speakers");
+		driver.findElement(By.id("2")).sendKeys("3");
+		driver.findElement(By.id("3")).sendKeys("234");
+		driver.findElement(By.id("4")).sendKeys("desktop");
+        driver.findElement(By.id("rmavalue_1")).sendKeys("12352");
+		driver.findElement(By.id("orderidTxt_1")).sendKeys("123652");
+        WebElement FileUpload = driver.findElement(By.xpath("//*[@id=\"addinvoiceTxtMul_1\"]"));
+		FileUpload.sendKeys("C:\\Users\\Jyotheeswar\\Pictures\\Saved Pictures\\bb.png");
+		System.out.println("File is Uploaded Successfully");
+		driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[7]/div/div/input[2]")).click();
+		driver.findElement(By.xpath("/html/body/div[3]/header/nav/div/div/div[2]/div[2]/div[2]/div/div/ul/li[1]/a")).click();
+	}
+
+}
