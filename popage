@@ -1,0 +1,60 @@
+package boxon.front.end;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Pickuporder {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		System.setProperty("webdriver.edge.driver", "C://Users//Jyotheeswar//Downloads//newver//msedgedriver.exe");
+		WebDriver driver = new EdgeDriver();
+		driver.get("http://cricbuzz.smarteweb.com/wbe/index.php/en/component/userprofile/user");
+		driver.manage().window().maximize();
+		driver.findElement(By.id("unameTxt")).sendKeys("AECUST1004");
+		driver.findElement(By.id("passwordTxt")).sendKeys("Iblesoft@123");
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		driver.findElement(
+				By.xpath("//*[@id=\"content\"]/div/div[2]/div/div[2]/div[5]/div/div/div[2]/div/div[2]/div/a")).click();
+		Select drpcountry = new Select(driver.findElement(By.name("txtShipperName")));
+		drpcountry.selectByVisibleText("Raj Kumar");
+		driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[2]/div[1]/div/select")).click();
+		Select txtConsigneeName = new Select(driver.findElement(By.name("txtConsigneeName")));
+		txtConsigneeName.selectByVisibleText("Raj Kumar");
+		driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[3]/div[1]/div/select")).click();
+		Select txtThirdPartyName = new Select(driver.findElement(By.name("txtThirdPartyName")));
+		txtThirdPartyName.selectByVisibleText("Raj Kumar");
+		driver.findElement(By.xpath("//*[@id=\"txtSourceCntry\"]")).click();
+		Select txtSourceCntry = new Select(driver.findElement(By.id("txtSourceCntry")));
+		txtSourceCntry.selectByVisibleText("INDIA");
+		driver.findElement(By.xpath("//*[@id=\"txtDestinationCntry\"]")).click();
+		Select txtDestinationCntry = new Select(driver.findElement(By.id("txtDestinationCntry")));
+		txtDestinationCntry.selectByVisibleText("UNITED STATES");
+		driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[5]/div[1]/div/select")).click();
+		Select dropdown = new Select(driver.findElement(By.name("txtTypeOfShipperName")));
+		dropdown.selectByVisibleText("Air");
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[5]/div[3]/div/select")).click();
+		Select txtWeightUnits = new Select(driver.findElement(By.name("txtWeightUnits")));
+		txtWeightUnits.selectByVisibleText("Kilograms");
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[5]/div[4]/div/select")).click();
+		Select txtMeasurementUnits = new Select(driver.findElement(By.name("txtMeasurementUnits")));
+		txtMeasurementUnits.selectByVisibleText("FEET");
+		driver.findElement(By.name("txtChargableWeight")).click();
+		driver.findElement(By.name("txtItemName[]")).sendKeys("TATA");
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//*[@id=\"1\"]")).click();
+		Select txtPack = new Select(driver.findElement(By.name("txtPackageList[]")));
+		txtPack.selectByVisibleText("Box Demo");
+		Thread.sleep(1000);
+		driver.findElement(By.name("txtQuantity[]")).sendKeys("5");
+		driver.findElement(By.name("txtLength[]")).sendKeys("12");
+		driver.findElement(By.name("txtWidth[]")).sendKeys("14");
+		driver.findElement(By.name("txtHeight[]")).sendKeys("13");
+		driver.findElement(By.name("txtWeight[]")).sendKeys("10");
+		driver.findElement(By.name("btnCalculate")).click();
+	}
+}
