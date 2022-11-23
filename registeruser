@@ -1,0 +1,56 @@
+package boxon.front.end;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Registrationpag {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.edge.driver", "C://Users//Jyotheeswar//Downloads//newver//msedgedriver.exe");
+		WebDriver driver = new EdgeDriver();
+		driver.get("http://cricbuzz.smarteweb.com/wbe/index.php/en/component/userprofile/user?layout=viewshipments");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"theme_nav\"]/div[1]/ul/li[2]/a")).click();
+		Select accounttypeTxt = new Select(driver.findElement(By.id("accounttypeTxt")));
+		accounttypeTxt.selectByVisibleText("INDIVIDUAL");
+		driver.findElement(By.id("fnameTxt")).sendKeys("TATA");
+		driver.findElement(By.id("lnameTxt")).sendKeys("DTDC");
+		driver.findElement(By.id("emailTxt")).sendKeys("ATATA199@GMAIL.COM");
+		WebElement FileUpload = driver.findElement(By.xpath("//*[@id=\"userphotoTxt\"]"));
+		FileUpload.sendKeys("C:\\Users\\Jyotheeswar\\Pictures\\Saved Pictures\\bb.png");
+		System.out.println("File is Uploaded Successfully");
+		driver.findElement(By.id("addressTxt")).sendKeys("DTDC");
+		Select drpcountry = new Select(driver.findElement(By.id("countryTxt")));
+		drpcountry.selectByVisibleText("AUSTRALIA");
+		Thread.sleep(1000);
+		Select drpcountry1 = new Select(driver.findElement(By.id("stateTxt")));
+		drpcountry1.selectByVisibleText("VICTORIA");
+		Thread.sleep(1000);
+		Select drpcountry2 = new Select(driver.findElement(By.id("cityTxt")));
+		drpcountry2.selectByVisibleText("AIRLY");
+		driver.findElement(By.id("phoneTxt")).sendKeys("1259856320");
+		Select drpcountry3 = new Select(driver.findElement(By.id("idtypeTxt")));
+		drpcountry3.selectByVisibleText("Others");
+		driver.findElement(By.id("idvalueTxt")).sendKeys("TATA");
+		driver.findElement(By.id("passwordTxt")).sendKeys("India@143");
+		driver.findElement(By.id("confirmpasswordTxt")).sendKeys("India@143");
+		driver.findElement(By.id("termsTxt")).click();
+		driver.findElement(By.id("recaptcha-anchor-label")).click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(
+                By.xpath("//iframe[starts-with(@name, 'a-') and starts-with(@src, 'https://www.google.com/recaptcha')]")));
+         wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//div[@class='recaptcha-checkbox-border']"))).click();
+        System.out.println("Clicked the checkbox");
+		driver.findElement(By.xpath("//*[@id=\"registerFormOne\"]/div/div/div/div[2]/div[3]/div[5]/div/button")).click();
+	}
+
+}
