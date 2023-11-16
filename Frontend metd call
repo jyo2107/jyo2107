@@ -1,0 +1,63 @@
+package pack.Frontcls.com;
+import static org.testng.Assert.assertEquals;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.devtools.v117.page.model.NavigatedWithinDocument;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+public class Basecls {
+	WebDriver driver;
+	    @BeforeMethod
+	    public void setup() {
+	      ChromeOptions co= new ChromeOptions();
+	   	  co.addArguments("--remote-allow-origins=*");
+	 	  driver =new ChromeDriver(co);
+	   	  driver.manage().window().maximize();
+	   	  driver.get("https://iblesoft.smarteweb.com/wbe/index.php/en/?option=com_register&view=login");
+	   	  driver.findElement(By.id("unameTxt")).sendKeys("IBLEC1157");
+	   	  driver.findElement(By.id("passwordTxt")).sendKeys("Iblesoft@123");
+	   	  driver.findElement(By.xpath("//button[@type='submit']")).click(); 
+	   	  String ExpectedTitle = "IBLESOFT";
+	   	  String actualTitle = driver.getTitle();
+	   	  assertEquals(actualTitle, ExpectedTitle);
+	    }
+	    @Test
+	    public void Menu1() throws InterruptedException {
+   	
+       Prealertcls pc = new  Prealertcls();	  
+	    pc.TestPrealert(driver);
+	    
+	        Thread.sleep(2000);
+    }	    
+	    @Test
+	    public void Menu2() throws InterruptedException {
+	    
+	    PickupOrdercls po = new  PickupOrdercls();
+	    po.PickupOrder3(driver);
+	    } 
+	    	 @Test
+	 	    public void Menu3() throws InterruptedException {	
+	    	
+	    Qutationcls qc = new  Qutationcls();
+	    qc.qutation(driver);
+	    	 }
+     @Test
+ 	    public void Menu4() throws InterruptedException {
+	     
+	    Calculatorcls cc = new Calculatorcls();
+	    cc.Calsc(driver);
+	    }  	  
+	    
+	   	
+	   	  }
+	  
+
+
+
