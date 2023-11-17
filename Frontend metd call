@@ -59,5 +59,304 @@ public class Basecls {
 	   	  }
 	  
 
+package pack.Frontcls.com;
+import static org.testng.Assert.assertEquals;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.TestNG;
+import org.testng.annotations.Test;
+public class Prealertcls {
+	
+	
+	public void TestPrealert(WebDriver driver) throws InterruptedException { 
+		
+		
+	    	driver.findElement(By.xpath("//*[@id=\"notificationModal\"]/div/div/div[3]/button")).click();
+		
+	    	Thread.sleep(2000);
+	    	
+	    	driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/a")).click();
+	 		driver.findElement(By.id("mnameTxt")).sendKeys("TATA");
+	 		driver.findElement(By.id("carrierTxt")).sendKeys("DTDC");
+	 		driver.findElement(By.id("carriertrackingTxt")).sendKeys("115522");
+	 		driver.findElement(By.xpath("//*[@id=\"orderdateTxt\"]")).click();
+	 		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/div/span[1]")).click();
+	 		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/div/span[1]")).click();
+	 		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[2]/td[6]/a")).click();
+	 		driver.findElement(By.id("country3Txt")).click();
+	 		Select drpcountry = new Select(driver.findElement(By.id("country3Txt")));
+	 		drpcountry.selectByVisibleText("AUSTRALIA");
+	 		driver.findElement(By.id("1")).sendKeys("Rocket");
+	 		driver.findElement(By.id("2")).sendKeys("3");
+	 		driver.findElement(By.id("3")).sendKeys("234");
+	 		Select se = new Select(driver.findElement(By.xpath("//*[@id=\"itemstatusTxt\"]")));
+	 		se.selectByVisibleText("Hold");
+	        driver.findElement(By.id("rmavalue_1")).sendKeys("12352");
+	 		driver.findElement(By.id("orderidTxt_1")).sendKeys("123652");
+	         WebElement FileUpload = driver.findElement(By.xpath("//*[@id=\"addinvoiceTxtMul_1\"]"));
+	 		FileUpload.sendKeys("C:\\Users\\Jyotheeswar\\Pictures\\Saved Pictures\\bb.png");
+	 		System.out.println("File is Uploaded Successfully");
+	 		driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[7]/div/div/input[2]")).click();
+	 		driver.findElement(By.id("lengthTxt_1")).sendKeys("10");
+	 		driver.findElement(By.id("widthTxt_1")).sendKeys("12");
+	 		driver.findElement(By.id("heightTxt_1")).sendKeys("15");
+	 		Thread.sleep(2000);
+	 		driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[7]/div/div/input[2]")).click();
+	 		
+	 		try {
+	 		    assertEquals(driver.findElement(By.className("alert-message")).getText(), "Pre alerts added successfully");
+	 		    System.out.println("PASS");
+	 		   driver.findElement(By.className("alert-message")).getText();  
+	 		} catch (Exception e) {
+	 		    
+	 		//	assertEquals(driver.findElement(By.className("login-errormsg")).getText(), "Your username OR password is incorrect or inactive");
+	 		    System.out.println("FAIL");
+	 		}
+	 		
+	 //		driver.quit();
+	 		
+	    }
+
+			
+		}
+
+	
+
+
+package pack.Frontcls.com;
+
+import static org.testng.Assert.assertEquals;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+public class PickupOrdercls  {
+	WebDriver driver;
+	
+	public void PickupOrder3(WebDriver driver) throws InterruptedException {
+		
+	driver.findElement(By.xpath("//*[@id=\"notificationModal\"]/div/div/div[3]/button")).click();
+		
+	Thread.sleep(2000);
+	driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[2]/div/a")).click();
+	Select drpcountry = new Select(driver.findElement(By.name("txtShipperName")));
+	drpcountry.selectByVisibleText("Tom cruies");
+	driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[2]/div[1]/div/select")).click();
+	Select txtConsigneeName = new Select(driver.findElement(By.name("txtConsigneeName")));
+	txtConsigneeName.selectByVisibleText("Tom cruies");
+	driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[3]/div[1]/div/select")).click();
+	Select txtThirdPartyName = new Select(driver.findElement(By.name("txtThirdPartyName")));
+	txtThirdPartyName.selectByVisibleText("Tom cruies");
+	driver.findElement(By.xpath("//*[@id=\"txtSourceCntry\"]")).click();
+	Select txtSourceCntry = new Select(driver.findElement(By.id("txtSourceCntry")));
+	txtSourceCntry.selectByVisibleText("UNITED STATES");
+	driver.findElement(By.xpath("//*[@id=\"txtDestinationCntry\"]")).click();
+	Select txtDestinationCntry = new Select(driver.findElement(By.id("txtDestinationCntry")));
+	txtDestinationCntry.selectByVisibleText("AUSTRALIA");
+	driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[5]/div[1]/div/select")).click();
+	Select dropdown = new Select(driver.findElement(By.name("txtTypeOfShipperName")));
+	dropdown.selectByVisibleText("Air");
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[5]/div[3]/div/select")).click();
+	Select txtWeightUnits = new Select(driver.findElement(By.name("txtWeightUnits")));
+	txtWeightUnits.selectByVisibleText("Kilograms");
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[5]/div[4]/div/select")).click();
+	Select txtMeasurementUnits = new Select(driver.findElement(By.name("txtMeasurementUnits")));
+	txtMeasurementUnits.selectByVisibleText("FEET");
+	driver.findElement(By.name("txtChargableWeight")).click();
+	    driver.findElement(By.name("txtPickupDate")).click();
+		driver.findElement(By.className("ui-datepicker-month")).click();
+		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[3]/td[5]/a")).click();
+		
+		
+		driver.findElement(By.name("txtNotes")).sendKeys("TATA");
+	driver.findElement(By.name("txtItemName[]")).sendKeys("TATA");
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//*[@id=\"1\"]")).click();
+	Select txtPack = new Select(driver.findElement(By.name("txtPackageList[]")));
+	txtPack.selectByVisibleText("Box Demo");
+	Thread.sleep(1000);
+	driver.findElement(By.name("txtQuantity[]")).sendKeys("2");
+	driver.findElement(By.name("txtLength[]")).sendKeys("2");
+	driver.findElement(By.name("txtWidth[]")).sendKeys("3");
+	driver.findElement(By.name("txtHeight[]")).sendKeys("1");
+	driver.findElement(By.name("txtWeight[]")).sendKeys("2");
+	driver.findElement(By.name("btnCalculate")).click();
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[14]/div/input[25]")).click();
+	try {
+	    assertEquals(driver.findElement(By.className("alert-headinge")).getText(), "Pickup Order Added Successfully !!!");
+
+
+	    System.out.println("PASS");
+	    
+	    driver.findElement(By.className("alert-heading")).getText();  
+
+	} catch (Exception e) {
+	    
+
+		
+	
+	}
+	
+	
+
+}
+}
+
+package pack.Frontcls.com;
+
+import static org.testng.Assert.assertEquals;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+public class Qutationcls   {
+
+public void qutation(WebDriver driver) throws InterruptedException{
+	
+	driver.findElement(By.xpath("//*[@id=\"notificationModal\"]/div/div/div[3]/button")).click();
+	Thread.sleep(2000);
+	driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div/a")).click();
+	driver.findElement(By.xpath("//*[@id=\"txtSourceCntry\"]")).click();
+	Select txtSourceCntry = new Select(driver.findElement(By.id("txtSourceCntry")));
+	txtSourceCntry.selectByVisibleText("UNITED STATES");
+	driver.findElement(By.xpath("//*[@id=\"txtDestinationCntry\"]")).click();
+	Select txtDestinationCntry = new Select(driver.findElement(By.id("txtDestinationCntry")));
+	txtDestinationCntry.selectByVisibleText("AUSTRALIA");
+	Select dropdown = new Select(driver.findElement(By.name("txtTypeOfShipperName")));
+	dropdown.selectByVisibleText("Air");
+	Thread.sleep(1000);
+	Select txtWeightUnits = new Select(driver.findElement(By.name("txtWeightUnits")));
+	txtWeightUnits.selectByVisibleText("Kilograms");
+	Thread.sleep(1000);
+	Select txtMeasurementUnits = new Select(driver.findElement(By.name("txtMeasurementUnits")));
+	txtMeasurementUnits.selectByVisibleText("FEET");
+	driver.findElement(By.name("txtItemName[]")).sendKeys("TATA");
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//*[@id=\"1\"]")).click();
+	Select txtPack = new Select(driver.findElement(By.name("txtPackageList[]")));
+	txtPack.selectByVisibleText("Box Demo");
+	Thread.sleep(1000);
+	driver.findElement(By.name("txtQuantity[]")).sendKeys("5");
+	driver.findElement(By.name("txtLength[]")).sendKeys("12");
+	driver.findElement(By.name("txtWidth[]")).sendKeys("14");
+	driver.findElement(By.name("txtHeight[]")).sendKeys("13");
+	driver.findElement(By.name("txtWeight[]")).sendKeys("10");
+	driver.findElement(By.name("btnCalculate")).click();
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[8]/div/input[18]")).click();
+	
+	
+	try {
+	    assertEquals(driver.findElement(By.className("alert-message")).getText(), "Quotation Added Successfully !!!");
+
+
+	    System.out.println("PASS");
+	    
+	    driver.findElement(By.className("alert-message")).getText();  
+	    
+	} catch (Exception e) {
+		    
+ 			//assertEquals(driver.findElement(By.className("login-errormsg")).getText(), "Your username OR password is incorrect or inactive");
+ 		    System.out.println("FAIL");
+ 		}
+
+
+
+	}
+}
+
+package pack.Frontcls.com;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+import org.testng.internal.BaseClassFinder;
+
+public class Calculatorcls  {
+	
+	public void Calsc (WebDriver driver) throws InterruptedException {
+		driver.findElement(By.xpath("//*[@id=\"notificationModal\"]/div/div/div[3]/button")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div[2]/div/div[2]/div[4]/div/div/div[2]/div/div[1]/div/a")).click();
+		//*[@id="content"]/div/div[2]/div/div[2]/div/div[2]/div[4]/div/div/div[2]/div/div[1]/div/a
+		driver.findElement(By.xpath("//*[@id=\"txtSourceCntry\"]")).click();
+		Select txtSourceCntry = new Select(driver.findElement(By.id("txtSourceCntry")));
+		txtSourceCntry.selectByVisibleText("AUSTRALIA");
+		driver.findElement(By.xpath("//*[@id=\"txtDestinationCntry\"]")).click();
+		Select txtDestinationCntry = new Select(driver.findElement(By.id("txtDestinationCntry")));
+		txtDestinationCntry.selectByVisibleText("SWITZERLAND");
+		Select txtMeasurementUnits = new Select(driver.findElement(By.name("txtMeasurementUnits")));
+		txtMeasurementUnits.selectByVisibleText("FEET");
+		Thread.sleep(1000);
+		Select txtWeightUnits = new Select(driver.findElement(By.name("txtWeightUnits")));
+		txtWeightUnits.selectByVisibleText("KILOGRAMS");
+		Thread.sleep(1000);
+		Select dropdown = new Select(driver.findElement(By.name("txtShipperType")));
+		dropdown.selectByVisibleText("Air");
+		driver.findElement(By.name("txtQuantity")).sendKeys("5");
+		driver.findElement(By.name("txtLength")).sendKeys("12");
+		driver.findElement(By.name("txtWidth")).sendKeys("14");
+		driver.findElement(By.name("txtHeight")).sendKeys("13");
+		driver.findElement(By.name("txtWeight")).sendKeys("10");
+		driver.findElement(By.name("btnCalculate")).click();
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
